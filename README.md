@@ -101,10 +101,12 @@ ElasticSearch JSON Files:
 1. employee_mapping.json - Index Schema Definition
 2. sample_employee_document.json - Example Document
 
+Keeping SQL and ElasticSearch in Sync
+In a production environment, I would architect the synchronization between the SQL database and ElasticSearch using an asynchronous event-driven pattern. When a user updates an employee's salary via a web interface, the application first executes the SQL transaction within a database transaction to ensure data consistency. Upon successful commit, a domain event (e.g., EmployeeSalaryUpdated) is dispatched to Symfony Messenger. This message is then processed asynchronously by a dedicated worker service, which handles the ElasticSearch index update. This approach provides several benefits: it decouples the write operations, ensures the user receives a fast response since ElasticSearch indexing happens in the background, and provides natural retry mechanisms if ElasticSearch is temporarily unavailable. The async pattern also allows for batching multiple updates and implementing eventual consistency, which is acceptable for search use cases while maintaining strong consistency for the primary SQL database.
+
 Event Sourcing Pattern
 
 User Update → SQL Transaction → Commit → Messenger Message → Worker → ElasticSearch
-
 
 ## Running Analysis
 
