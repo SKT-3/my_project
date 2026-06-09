@@ -1,0 +1,9 @@
+{
+  "id": "018f1234-5678-9abc-def0-123456789abc",
+  "name": "Alice Smith",
+  "age": 29,
+  "grade": "L3",
+  "salary": 55000.50,
+  "created_at": "2024-06-09 12:34:56",
+  "updated_at": "2024-06-09 12:34:56"
+}

@@ -1,0 +1,68 @@
+{
+  "mappings": {
+    "properties": {
+      "id": {
+        "type": "keyword"
+      },
+      "name": {
+        "type": "text",
+        "analyzer": "standard",
+        "fields": {
+          "keyword": {
+            "type": "keyword",
+            "ignore_above": 256
+          },
+          "fuzzy": {
+            "type": "text",
+            "analyzer": "fuzzy_analyzer"
+          }
+        }
+      },
+      "age": {
+        "type": "integer"
+      },
+      "grade": {
+        "type": "keyword",
+        "fields": {
+        "text": {
+          "type": "text",
+          "analyzer": "standard"
+        }
+      }
+      },
+      "salary": {
+        "type": "double"
+      },
+      "created_at": {
+        "type": "date",
+        "format": "yyyy-MM-dd HH:mm:ss"
+      },
+      "updated_at": {
+        "type": "date",
+        "format": "yyyy-MM-dd HH:mm:ss"
+      }
+    }
+  },
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "fuzzy_analyzer": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": [
+            "lowercase",
+            "asciifolding",
+            "ngram"
+          ]
+        }
+      },
+      "filter": {
+        "ngram": {
+          "type": "ngram",
+          "min_gram": 2,
+          "max_gram": 3
+        }
+      }
+    }
+  }
+}

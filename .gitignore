@@ -1,0 +1,39 @@
+# Composer
+/vendor/
+composer.lock
+
+# Symfony
+/var/
+/cache/
+/log/
+/.env.local
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.decrypt.private.php
+/public/bundles/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+/phpunit.xml
+.phpunit.result.cache
+/coverage/
+
+# Build
+/build/
+/dist/
+
+# Misc
+*.log
+*.sqlite
+*.db
